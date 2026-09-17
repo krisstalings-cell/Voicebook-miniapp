@@ -1,1 +1,184 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>VoiceBook</title>
+
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#07111f;
+    color:#ffffff;
+}
+
+.container{
+    max-width:600px;
+    margin:auto;
+    padding:20px;
+}
+
+.header{
+    text-align:center;
+    padding:25px 10px;
+}
+
+.logo{
+    font-size:42px;
+}
+
+.title{
+    font-size:28px;
+    font-weight:bold;
+    margin-top:8px;
+}
+
+.subtitle{
+    color:#9fb0c5;
+    margin-top:8px;
+}
+
+.card{
+    background:#101d2e;
+    border-radius:18px;
+    padding:18px;
+    margin:12px 0;
+    border:1px solid #1c3048;
+}
+
+.card h3{
+    margin:0 0 8px;
+}
+
+.card p{
+    color:#aebed0;
+    line-height:1.7;
+    margin:0;
+}
+
+button{
+    width:100%;
+    border:0;
+    border-radius:14px;
+    padding:15px;
+    margin-top:10px;
+    font-size:16px;
+    color:white;
+    background:#183451;
+    cursor:pointer;
+}
+
+button:active{
+    transform:scale(.98);
+}
+
+.primary{
+    background:#246b9e;
+}
+
+.status{
+    text-align:center;
+    color:#7f94aa;
+    margin-top:20px;
+    font-size:13px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+
+        <div class="logo">🎙️</div>
+
+        <div class="title">
+            VOICEBOOK
+        </div>
+
+        <div class="subtitle">
+            صدای تو، آرشیو تو
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <h3>📖 وظیفه امروز</h3>
+
+        <p id="today">
+            هنوز اطلاعاتی دریافت نشده است.
+        </p>
+
+        <button
+            class="primary"
+            onclick="todayTask()">
+            📖 مشاهده وظیفه امروز
+        </button>
+
+    </div>
+
+
+    <div class="card">
+
+        <h3>⏳ صف خوانش</h3>
+
+        <p id="queue">
+            صف خوانش در انتظار اتصال به ربات است.
+        </p>
+
+        <button onclick="showQueue()">
+            ⏳ مشاهده صف
+        </button>
+
+    </div>
+
+
+    <div class="card">
+
+        <h3>🎤 خوانش جدید</h3>
+
+        <p>
+            برای ارسال خوانش جدید، از ربات VoiceBook استفاده کن.
+        </p>
+
+        <button onclick="addVoice()">
+            🎤 افزودن خوانش
+        </button>
+
+    </div>
+
+
+    <div class="card">
+
+        <h3>🪝 قلاب ایده‌ها</h3>
+
+        <p id="ideas">
+            ایده‌های شخصی تو اینجا نمایش داده خواهند شد.
+        </p>
+
+        <button onclick="showIdeas()">
+            🪝 ایده‌های من
+        </button>
+
+    </div>
+
+
+    <div class="card">
+
+        <h3>📦 آرشیو من</h3>
+
+        <p id="archive">
+            آرشیو خوانش‌های
