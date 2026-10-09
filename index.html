@@ -2,183 +2,188 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>VoiceBook</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#07111f">
+<title>VOICEBOOK | صدای تو، آرشیو تو</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
-
 <style>
-
-*{
-    box-sizing:border-box;
-}
-
-body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#07111f;
-    color:#ffffff;
-}
-
-.container{
-    max-width:600px;
-    margin:auto;
-    padding:20px;
-}
-
-.header{
-    text-align:center;
-    padding:25px 10px;
-}
-
-.logo{
-    font-size:42px;
-}
-
-.title{
-    font-size:28px;
-    font-weight:bold;
-    margin-top:8px;
-}
-
-.subtitle{
-    color:#9fb0c5;
-    margin-top:8px;
-}
-
-.card{
-    background:#101d2e;
-    border-radius:18px;
-    padding:18px;
-    margin:12px 0;
-    border:1px solid #1c3048;
-}
-
-.card h3{
-    margin:0 0 8px;
-}
-
-.card p{
-    color:#aebed0;
-    line-height:1.7;
-    margin:0;
-}
-
-button{
-    width:100%;
-    border:0;
-    border-radius:14px;
-    padding:15px;
-    margin-top:10px;
-    font-size:16px;
-    color:white;
-    background:#183451;
-    cursor:pointer;
-}
-
-button:active{
-    transform:scale(.98);
-}
-
-.primary{
-    background:#246b9e;
-}
-
-.status{
-    text-align:center;
-    color:#7f94aa;
-    margin-top:20px;
-    font-size:13px;
-}
-
+:root{--bg:#07111f;--panel:#101d2e;--panel2:#14263a;--line:#223951;--text:#f4f8ff;--muted:#9fb0c5;--blue:#2d8ac4;--cyan:#59d6df;--gold:#e8c77b;--danger:#e77979}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at top,#102943 0%,var(--bg) 48%);font-family:Tahoma,Arial,sans-serif;color:var(--text);min-height:100vh}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer;transition:transform .15s,filter .15s}
+button:active{transform:scale(.985)}
+.container{max-width:680px;margin:auto;padding:16px 16px calc(32px + env(safe-area-inset-bottom))}
+.header{text-align:center;padding:28px 10px 22px}
+.logo{width:76px;height:76px;margin:auto;border-radius:24px;display:grid;place-items:center;font-size:39px;background:linear-gradient(145deg,#173f5d,#102034);border:1px solid #2b5773;box-shadow:0 10px 36px #0005}
+.title{font-size:29px;font-weight:800;letter-spacing:2px;margin-top:14px}
+.subtitle{color:var(--muted);margin-top:8px;font-size:14px}
+.pill{display:inline-flex;align-items:center;gap:6px;border:1px solid #24465b;color:#9edee4;background:#102b3b;border-radius:999px;padding:6px 11px;font-size:12px;margin-top:14px}
+.card{background:linear-gradient(145deg,#122237,#0d1a2a);border:1px solid var(--line);border-radius:20px;padding:18px;margin:13px 0;box-shadow:0 10px 26px #0002}
+.card-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.card-icon{width:42px;height:42px;flex:0 0 42px;display:grid;place-items:center;background:#1a3550;border-radius:13px;font-size:21px}
+h2,h3,p{margin-top:0}
+h2{font-size:17px;margin-bottom:4px}
+.card p{color:#afbed0;line-height:1.9;margin-bottom:0;font-size:14px}
+.small{font-size:12px;color:var(--muted)}
+.btn{width:100%;border:1px solid #294864;border-radius:13px;padding:13px 14px;margin-top:10px;color:#f5f9ff;background:#183451}
+.btn.primary{background:linear-gradient(120deg,#246b9e,#237c9b);border-color:#3887ad}
+.btn.ghost{background:#0d1a29}
+.btn.gold{background:linear-gradient(120deg,#8c7138,#b99a55);border-color:#c8ad6b;color:#fff}
+.btn.danger{background:#40232d;border-color:#63323b;color:#ffdede}
+.btnrow{display:flex;gap:9px}
+.btnrow .btn{flex:1}
+.info{padding:13px;border-radius:13px;background:#0a1725;border:1px dashed #2a4258;color:#b4c4d6;font-size:13px;line-height:1.8}
+.statgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:14px 0}
+.stat{background:#0b1928;border:1px solid #1f354b;border-radius:14px;padding:13px 8px;text-align:center}
+.stat strong{display:block;font-size:22px;color:var(--cyan);margin-bottom:5px}
+.stat span{font-size:11px;color:var(--muted)}
+.list{display:grid;gap:8px;margin-top:12px}
+.item{background:#0b1928;border:1px solid #20374d;border-radius:13px;padding:12px}
+.item-title{font-weight:bold;font-size:14px;overflow-wrap:anywhere}
+.item-meta{font-size:11px;color:var(--muted);margin-top:5px;line-height:1.7}
+.item-actions{display:flex;gap:7px;margin-top:9px}
+.item-actions button{flex:1;border:1px solid #29445d;border-radius:9px;padding:8px 6px;background:#14283d;color:#eaf3ff;font-size:12px}
+.field{display:block;margin-top:12px}
+.field span{display:block;font-size:13px;color:#c0cede;margin-bottom:7px}
+.field input,.field textarea,.field select{width:100%;border:1px solid #2b4259;background:#081522;color:#fff;border-radius:12px;padding:12px;outline:none}
+.field textarea{min-height:90px;resize:vertical;line-height:1.8}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:#59b9d5}
+.progress{height:8px;background:#091522;border-radius:99px;overflow:hidden;margin-top:12px}
+.progress div{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--cyan));border-radius:99px;transition:width .3s}
+.nav{position:sticky;bottom:8px;z-index:4;display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:8px;background:#091522ed;border:1px solid #263d52;border-radius:16px;backdrop-filter:blur(12px);margin-top:18px}
+.nav button{border:0;background:transparent;color:#a8bacd;border-radius:10px;padding:9px 3px;font-size:11px}
+.nav button span{display:block;font-size:18px;margin-bottom:4px}
+.nav button.active{background:#18364d;color:#fff}
+.status{text-align:center;color:#71879d;margin:16px 0 4px;font-size:11px;line-height:1.8}
+.hidden{display:none!important}
+.empty{text-align:center;padding:17px 8px;color:#8fa4b9;font-size:13px;line-height:1.9}
+.toast{position:fixed;left:16px;right:16px;bottom:90px;z-index:10;max-width:500px;margin:auto;background:#18364b;border:1px solid #39718a;color:white;border-radius:12px;padding:13px 15px;text-align:center;box-shadow:0 8px 30px #0008}
+@media(min-width:540px){.container{padding-top:24px}.card{padding:22px}.title{font-size:32px}}
 </style>
 </head>
-
 <body>
-
 <div class="container">
+  <header class="header">
+    <div class="logo">🎙️</div>
+    <div class="title">VOICEBOOK</div>
+    <div class="subtitle">صدای تو، آرشیو تو</div>
+    <div class="pill">🦋 فضای شخصی خوانش</div>
+  </header>
 
-    <div class="header">
+  <main>
+    <section class="card" id="today-section">
+      <div class="card-head"><div class="card-icon">📖</div><div><h2>وظیفه امروز</h2><div class="small">بخش تعیین‌شده برای خوانش امروز</div></div></div>
+      <p id="todayText">هنوز وظیفه‌ای ثبت نشده است. می‌توانی یک وظیفه به‌صورت محلی اضافه کنی.</p>
+      <button class="btn primary" onclick="showToday()">📖 مشاهده وظیفه امروز</button>
+      <div class="btnrow"><button class="btn" onclick="markTodayDone()">✅ انجام شد</button><button class="btn ghost" onclick="snoozeToday()">⏳ بعداً</button></div>
+    </section>
 
-        <div class="logo">🎙️</div>
+    <section class="card" id="queue-section">
+      <div class="card-head"><div class="card-icon">⏳</div><div><h2>صف خوانش</h2><div class="small">بخش‌هایی که در انتظار خواندن هستند</div></div></div>
+      <p id="queueSummary">صف خوانش خالی است.</p>
+      <div id="queueList" class="list"></div>
+      <button class="btn" onclick="toggleForm('queueForm')">➕ افزودن بخش به صف</button>
+      <div id="queueForm" class="hidden">
+        <label class="field"><span>عنوان بخش</span><input id="queueTitle" placeholder="مثلاً فصل اول"></label>
+        <label class="field"><span>توضیح (اختیاری)</span><textarea id="queueNote" placeholder="صفحه‌ها یا توضیح کوتاه..."></textarea></label>
+        <button class="btn primary" onclick="addQueue()">ذخیره در صف</button>
+      </div>
+    </section>
 
-        <div class="title">
-            VOICEBOOK
-        </div>
+    <section class="card" id="voice-section">
+      <div class="card-head"><div class="card-icon">🎤</div><div><h2>خوانش جدید</h2><div class="small">ثبت مشخصات خوانش یا انتخاب فایل صوتی</div></div></div>
+      <div class="info">این صفحه می‌تواند مشخصات خوانش و فایل انتخابی را در همین مرورگر نگه دارد. ارسال خودکار صدا به ربات، به اتصال جداگانه تلگرام نیاز دارد.</div>
+      <label class="field"><span>نام خوانش</span><input id="voiceTitle" placeholder="مثلاً خوانش فصل اول"></label>
+      <label class="field"><span>یادداشت</span><textarea id="voiceNote" placeholder="نام کتاب، فصل یا توضیح..."></textarea></label>
+      <label class="field"><span>انتخاب فایل صوتی (اختیاری)</span><input id="voiceFile" type="file" accept="audio/*"></label>
+      <button class="btn primary" onclick="addVoice()">🎙️ ثبت خوانش</button>
+      <div id="voiceList" class="list"></div>
+    </section>
 
-        <div class="subtitle">
-            صدای تو، آرشیو تو
-        </div>
+    <section class="card" id="ideas-section">
+      <div class="card-head"><div class="card-icon">🪝</div><div><h2>قلاب ایده‌ها</h2><div class="small">ایده‌هایی که هنگام خواندن به ذهنت می‌رسند</div></div></div>
+      <p>هر ایده را کوتاه ثبت کن تا بعداً بتوانی به آن برگردی.</p>
+      <label class="field"><span>عنوان ایده</span><input id="ideaTitle" placeholder="عنوان کوتاه ایده"></label>
+      <label class="field"><span>متن ایده</span><textarea id="ideaText" placeholder="چه چیزی به ذهنت رسید؟"></textarea></label>
+      <button class="btn primary" onclick="addIdea()">🪝 ذخیره ایده</button>
+      <div id="ideasList" class="list"></div>
+    </section>
 
-    </div>
+    <section class="card" id="archive-section">
+      <div class="card-head"><div class="card-icon">📦</div><div><h2>آرشیو من</h2><div class="small">مرور خوانش‌ها و ایده‌های ذخیره‌شده</div></div></div>
+      <div class="statgrid">
+        <div class="stat"><strong id="statVoices">۰</strong><span>خوانش ثبت‌شده</span></div>
+        <div class="stat"><strong id="statIdeas">۰</strong><span>ایده ذخیره‌شده</span></div>
+        <div class="stat"><strong id="statDone">۰</strong><span>وظیفه انجام‌شده</span></div>
+      </div>
+      <label class="field"><span>جست‌وجو در آرشیو</span><input id="archiveSearch" placeholder="عنوان یا متن را جست‌وجو کن..." oninput="renderArchive()"></label>
+      <div id="archiveList" class="list"></div>
+      <div class="btnrow"><button class="btn" onclick="exportData()">⬇️ خروجی اطلاعات</button><button class="btn ghost" onclick="document.getElementById('importFile').click()">⬆️ بازیابی</button></div>
+      <input id="importFile" class="hidden" type="file" accept="application/json,.json" onchange="importData(event)">
+    </section>
 
+    <section class="card" id="settings-section">
+      <div class="card-head"><div class="card-icon">⚙️</div><div><h2>تنظیمات</h2><div class="small">مدیریت داده‌های این مرورگر</div></div></div>
+      <label class="field"><span>وظیفه امروز</span><input id="taskInput" placeholder="مثلاً خواندن ۵ صفحه از کتاب"></label>
+      <button class="btn primary" onclick="saveTask()">ذخیره وظیفه امروز</button>
+      <div class="progress"><div id="progressBar"></div></div>
+      <p id="progressLabel" class="small" style="margin-top:8px">پیشرفت وظیفه: ۰٪</p>
+      <button class="btn danger" onclick="clearData()">پاک‌کردن همه اطلاعات محلی</button>
+    </section>
+  </main>
 
-    <div class="card">
+  <nav class="nav" aria-label="ناوبری">
+    <button class="active" onclick="goTo('today-section',this)"><span>📖</span>امروز</button>
+    <button onclick="goTo('queue-section',this)"><span>⏳</span>صف خوانش</button>
+    <button onclick="goTo('ideas-section',this)"><span>🪝</span>ایده‌ها</button>
+    <button onclick="goTo('archive-section',this)"><span>📦</span>آرشیو</button>
+  </nav>
+  <footer class="status">VOICEBOOK · صدای تو، آرشیو تو<br><span id="connectionStatus">حالت محلی · آماده استفاده</span></footer>
+</div>
+<div id="toast" class="toast hidden" role="status"></div>
 
-        <h3>📖 وظیفه امروز</h3>
-
-        <p id="today">
-            هنوز اطلاعاتی دریافت نشده است.
-        </p>
-
-        <button
-            class="primary"
-            onclick="todayTask()">
-            📖 مشاهده وظیفه امروز
-        </button>
-
-    </div>
-
-
-    <div class="card">
-
-        <h3>⏳ صف خوانش</h3>
-
-        <p id="queue">
-            صف خوانش در انتظار اتصال به ربات است.
-        </p>
-
-        <button onclick="showQueue()">
-            ⏳ مشاهده صف
-        </button>
-
-    </div>
-
-
-    <div class="card">
-
-        <h3>🎤 خوانش جدید</h3>
-
-        <p>
-            برای ارسال خوانش جدید، از ربات VoiceBook استفاده کن.
-        </p>
-
-        <button onclick="addVoice()">
-            🎤 افزودن خوانش
-        </button>
-
-    </div>
-
-
-    <div class="card">
-
-        <h3>🪝 قلاب ایده‌ها</h3>
-
-        <p id="ideas">
-            ایده‌های شخصی تو اینجا نمایش داده خواهند شد.
-        </p>
-
-        <button onclick="showIdeas()">
-            🪝 ایده‌های من
-        </button>
-
-    </div>
-
-
-    <div class="card">
-
-        <h3>📦 آرشیو من</h3>
-
-        <p id="archive">
-            آرشیو خوانش‌های
+<script>
+const STORAGE_KEY = 'voicebook_local_v1';
+const defaultData = () => ({task:'',taskDone:false,taskSnoozed:false,doneCount:0,queue:[],voices:[],ideas:[]});
+let data = loadData();
+function loadData(){
+  try { const saved=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null'); return saved && typeof saved==='object' ? {...defaultData(),...saved} : defaultData(); }
+  catch(e){ return defaultData(); }
+}
+function persist(){ localStorage.setItem(STORAGE_KEY,JSON.stringify(data)); renderAll(); }
+function fa(n){return new Intl.NumberFormat('fa-IR').format(n);}
+function escapeHTML(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+let toastTimer;
+function toast(message){const el=document.getElementById('toast');el.textContent=message;el.classList.remove('hidden');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.add('hidden'),2600);}
+function goTo(id,button){document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'});document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));if(button)button.classList.add('active');}
+function toggleForm(id){document.getElementById(id).classList.toggle('hidden');}
+function saveTask(){data.task=document.getElementById('taskInput').value.trim();data.taskDone=false;data.taskSnoozed=false;persist();toast('وظیفه امروز ذخیره شد.');}
+function showToday(){if(!data.task){document.getElementById('taskInput').focus();toast('ابتدا وظیفه امروز را در تنظیمات وارد کن.');return;}toast('وظیفه امروز: '+data.task);}
+function markTodayDone(){if(!data.task){toast('هنوز وظیفه‌ای ثبت نشده است.');return;}if(!data.taskDone)data.doneCount++;data.taskDone=true;data.taskSnoozed=false;persist();toast('آفرین! وظیفه امروز انجام شد.');}
+function snoozeToday(){if(!data.task){toast('هنوز وظیفه‌ای ثبت نشده است.');return;}data.taskSnoozed=true;persist();toast('وظیفه برای بعداً علامت‌گذاری شد.');}
+function addQueue(){const title=document.getElementById('queueTitle').value.trim();const note=document.getElementById('queueNote').value.trim();if(!title){toast('عنوان بخش را وارد کن.');return;}data.queue.push({id:Date.now(),title,note,created:new Date().toISOString()});document.getElementById('queueTitle').value='';document.getElementById('queueNote').value='';document.getElementById('queueForm').classList.add('hidden');persist();toast('بخش به صف خوانش اضافه شد.');}
+function removeQueue(id){data.queue=data.queue.filter(x=>x.id!==id);persist();toast('بخش از صف حذف شد.');}
+function addVoice(){const title=document.getElementById('voiceTitle').value.trim();const note=document.getElementById('voiceNote').value.trim();const fileInput=document.getElementById('voiceFile');const file=fileInput.files&&fileInput.files[0];if(!title&&!file){toast('نام خوانش یا یک فایل صوتی انتخاب کن.');return;}data.voices.unshift({id:Date.now(),title:title||(file?file.name:'خوانش بدون عنوان'),note,fileName:file?file.name:'',fileSize:file?file.size:0,created:new Date().toISOString()});document.getElementById('voiceTitle').value='';document.getElementById('voiceNote').value='';fileInput.value='';persist();toast('مشخصات خوانش ذخیره شد.');}
+function deleteVoice(id){data.voices=data.voices.filter(x=>x.id!==id);persist();toast('خوانش از فهرست حذف شد.');}
+function addIdea(){const title=document.getElementById('ideaTitle').value.trim();const text=document.getElementById('ideaText').value.trim();if(!title&&!text){toast('عنوان یا متن ایده را وارد کن.');return;}data.ideas.unshift({id:Date.now(),title:title||'ایده بدون عنوان',text,created:new Date().toISOString()});document.getElementById('ideaTitle').value='';document.getElementById('ideaText').value='';persist();toast('ایده ذخیره شد.');}
+function deleteIdea(id){data.ideas=data.ideas.filter(x=>x.id!==id);persist();toast('ایده حذف شد.');}
+function fmtDate(v){try{return new Date(v).toLocaleDateString('fa-IR',{year:'numeric',month:'short',day:'numeric'});}catch(e){return '';}}
+function renderQueue(){document.getElementById('queueSummary').textContent=data.queue.length?`${fa(data.queue.length)} بخش در صف خوانش داری.`:'صف خوانش خالی است.';const el=document.getElementById('queueList');el.innerHTML=data.queue.length?data.queue.map(x=>`<div class="item"><div class="item-title">${escapeHTML(x.title)}</div>${x.note?`<div class="item-meta">${escapeHTML(x.note)}</div>`:''}<div class="item-meta">${fmtDate(x.created)}</div><div class="item-actions"><button onclick="setTaskFromQueue(${x.id})">📖 تعیین به‌عنوان وظیفه</button><button onclick="removeQueue(${x.id})">حذف</button></div></div>`).join(''):'<div class="empty">هنوز بخشی به صف اضافه نشده است.</div>';}
+function setTaskFromQueue(id){const item=data.queue.find(x=>x.id===id);if(!item)return;data.task=item.title+(item.note?' — '+item.note:'');data.taskDone=false;data.taskSnoozed=false;persist();toast('این بخش به وظیفه امروز تبدیل شد.');goTo('today-section',document.querySelector('.nav button'));}
+function renderVoices(){const el=document.getElementById('voiceList');el.innerHTML=data.voices.length?data.voices.map(x=>`<div class="item"><div class="item-title">🎤 ${escapeHTML(x.title)}</div>${x.note?`<div class="item-meta">${escapeHTML(x.note)}</div>`:''}${x.fileName?`<div class="item-meta">فایل انتخاب‌شده: ${escapeHTML(x.fileName)} · ${fa(Math.max(1,Math.round(x.fileSize/1024)))} کیلوبایت</div>`:''}<div class="item-meta">${fmtDate(x.created)}</div><div class="item-actions"><button onclick="deleteVoice(${x.id})">حذف از فهرست</button></div></div>`).join(''):'<div class="empty">هنوز خوانشی ثبت نشده است.</div>';}
+function renderIdeas(){const el=document.getElementById('ideasList');el.innerHTML=data.ideas.length?data.ideas.map(x=>`<div class="item"><div class="item-title">🪝 ${escapeHTML(x.title)}</div>${x.text?`<div class="item-meta" style="white-space:pre-wrap">${escapeHTML(x.text)}</div>`:''}<div class="item-meta">${fmtDate(x.created)}</div><div class="item-actions"><button onclick="copyIdea(${x.id})">کپی ایده</button><button onclick="deleteIdea(${x.id})">حذف</button></div></div>`).join(''):'<div class="empty">هنوز ایده‌ای ثبت نشده است.</div>';}
+function copyIdea(id){const x=data.ideas.find(i=>i.id===id);if(!x)return;const txt=x.title+'\n\n'+x.text;if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(txt).then(()=>toast('ایده کپی شد.')).catch(()=>toast(txt));else toast(txt);}
+function renderArchive(){const q=(document.getElementById('archiveSearch')?.value||'').trim().toLowerCase();const all=[...data.voices.map(x=>({...x,kind:'خوانش',search:(x.title+' '+x.note+' '+x.fileName).toLowerCase()})),...data.ideas.map(x=>({...x,kind:'ایده',search:(x.title+' '+x.text).toLowerCase()}))].filter(x=>!q||x.search.includes(q)).sort((a,b)=>b.id-a.id);const el=document.getElementById('archiveList');el.innerHTML=all.length?all.map(x=>`<div class="item"><div class="item-title">${x.kind==='ایده'?'🪝':'🎤'} ${escapeHTML(x.title)}</div><div class="item-meta">${x.kind} · ${fmtDate(x.created)}</div>${x.note?`<div class="item-meta">${escapeHTML(x.note)}</div>`:''}${x.text?`<div class="item-meta" style="white-space:pre-wrap">${escapeHTML(x.text)}</div>`:''}</div>`).join(''):'<div class="empty">موردی در آرشیو پیدا نشد.</div>';}
+function renderToday(){const el=document.getElementById('todayText');if(!data.task)el.textContent='هنوز وظیفه‌ای ثبت نشده است. از بخش تنظیمات، وظیفه امروزت را بنویس.';else el.innerHTML=`<strong>${escapeHTML(data.task)}</strong><br><span class="small">${data.taskDone?'✅ این وظیفه انجام شده است.':data.taskSnoozed?'⏳ برای بعداً علامت‌گذاری شده است.':'🎯 هر قدم کوچک، یک پیشرفت است.'}</span>`;document.getElementById('taskInput').value=data.task;document.getElementById('progressBar').style.width=data.taskDone?'100%':'0%';document.getElementById('progressLabel').textContent='پیشرفت وظیفه: '+(data.taskDone?'۱۰۰٪':'۰٪');}
+function renderStats(){document.getElementById('statVoices').textContent=fa(data.voices.length);document.getElementById('statIdeas').textContent=fa(data.ideas.length);document.getElementById('statDone').textContent=fa(data.doneCount);}
+function renderAll(){renderToday();renderQueue();renderVoices();renderIdeas();renderArchive();renderStats();}
+function exportData(){const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='voicebook-backup.json';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);toast('فایل پشتیبان آماده شد.');}
+function importData(event){const file=event.target.files&&event.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=()=>{try{const incoming=JSON.parse(reader.result);if(!incoming||typeof incoming!=='object')throw new Error('invalid');data={...defaultData(),...incoming};persist();toast('اطلاعات بازیابی شد.');}catch(e){toast('فایل معتبر نیست.');}event.target.value='';};reader.readAsText(file);}
+function clearData(){if(!confirm('همه اطلاعات ذخیره‌شده در این مرورگر پاک شود؟ بهتر است ابتدا خروجی بگیری.'))return;data=defaultData();persist();toast('اطلاعات محلی پاک شد.');}
+function initTelegram(){try{if(window.Telegram&&Telegram.WebApp){Telegram.WebApp.ready();Telegram.WebApp.expand();document.getElementById('connectionStatus').textContent='بازشده در تلگرام · داده‌ها فعلاً محلی هستند';}}catch(e){}}
+initTelegram();renderAll();
+</script>
+</body>
+</html>
